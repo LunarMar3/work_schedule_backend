@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/backend?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
+    username: root
+    password: 123Yzm66
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  mail:
+    host: smtp.qq.com
+    protocol: smtp
+    port: 587
+    username: 1624167381@qq.com
+    password: sbhdjxfzmnwldbea
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+  redis:
+    host: localhost
+    port: 6379
+
+server:
+  port: 999
