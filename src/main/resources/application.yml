@@ -20,4 +20,4 @@ spring:
     port: 6379
 
 server:
-  port: 999
+  port: 1000
