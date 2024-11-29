@@ -102,4 +102,21 @@ public class ProgressService {
         progressMapper.delete(queryWrapper);
         return new CommonResponse(200, "删除成功", null);
     }
+
+    public CommonResponse update(String token, ProgressDao progressDao) {
+        Claims claims = JWTUtil.parseToken(token);
+        if (claims == null) {
+            return new CommonResponse(401, "Unauthorized", null);
+        }
+        QueryWrapper<Progress> queryWrapper = new QueryWrapper<Progress>();
+        queryWrapper.eq("email", claims.getSubject());
+        queryWrapper.eq("id", progressDao.getId());
+        Progress progress = progressMapper.selectOne(queryWrapper);
+        if (progress == null) {
+            return new CommonResponse(500, "进度不存在", null);
+        }
+        progress.setProgress(progressDao.getProgress());
+        progressMapper.update(progress, queryWrapper);
+        return new CommonResponse(200, "更新成功", null);
+    }
 }
